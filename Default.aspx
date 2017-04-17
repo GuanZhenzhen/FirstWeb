@@ -88,17 +88,26 @@
              // alert(columnnum);
              $("#table1").empty();
              var data = $("<table border=\" 1 \">" + "<caption>" + "表格标题" + "</caption>");
-             
+
              data.appendTo($("#table1"));
-             
-             for (var j = 1; j <= linenum; j++) {
-                 var tr = $("<tr>");
-                 tr.appendTo(data);
-                 for (var i = 1; i <= columnnum; i++) {
-                     var td = $("<td>" + "第" + j + "行，第" + i + "列" + "</td>");
-                     td.appendTo(tr);
-                 }
+
+             var head = $("<tr>");
+             for (var i = 1; i <= columnnum; i++) {
+                 var th = $("<th>");
+                 th.html("第" + i + "列");
+                 head.append(th);
+
              }
+             data.append(head);
+
+                 for (var j = 1; j <= linenum; j++) {
+                     var tr = $("<tr>");
+                     tr.appendTo(data);
+                     for (var i = 1; i <= columnnum; i++) {
+                         var td = $("<td>" + "第" + j + "行，第" + i + "列" + "</td>");
+                         td.appendTo(tr);
+                     }
+                 }
 
              //$("#table1").append("</table>");
 
